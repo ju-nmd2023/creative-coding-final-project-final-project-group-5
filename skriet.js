@@ -6,10 +6,52 @@ function setup() {
     frameRate();
 }
 
+const skrietHeight = 400;
+
+function faceSkriet() {
+  push();
+  translate(width / 2, height - skrietHeight - 50);
+scale(2);
+translate(-width / 2, -(height - skrietHeight - 60));
+  
+   beginShape();
+fill(204, 142, 105);
+
+vertex(width / 2, height - skrietHeight - 120);
+
+// Right cheek
+bezierVertex(
+  width / 2 + 35, height - skrietHeight - 120,  
+  width / 2 + 70, height - skrietHeight - 70,   
+  width / 2 + 25, height - skrietHeight - 25    
+);
+
+// Chin curve
+bezierVertex(
+  width / 2 + 10, height - skrietHeight - 5,    
+  width / 2 - 10, height - skrietHeight - 5,    
+  width / 2 - 25, height - skrietHeight - 25  
+);
+
+// Left cheek
+bezierVertex(
+  width / 2 - 70, height - skrietHeight - 70,   
+  width / 2 - 35, height - skrietHeight - 120,  
+  width / 2, height - skrietHeight - 120       
+);
+
+endShape(CLOSE);
+pop();
+}
+
 function skriet() {
     //The scream + Frida Kahlo
+    noStroke();
     fill(0);
-    rect(100, 100, 50, 50);
+    rect(width / 2 - 125, height - skrietHeight, 250, skrietHeight, 120, 120, 0, 0);
+
+faceSkriet();
+
 }
 
 function butterfly() {
@@ -144,4 +186,3 @@ function draw() {
 
 
 }
-//test
