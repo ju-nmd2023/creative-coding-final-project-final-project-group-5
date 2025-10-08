@@ -1,6 +1,6 @@
 function setup() {
     createCanvas(600, 800);
-    background(206, 229, 237);
+    background(140, 110, 80);
     field = generateField();
     generateAgents();
     frameRate();
@@ -26,12 +26,12 @@ function skyBlobs() {
 
 //Nellies code cite
 const colors = [
-  [92, 139, 173],
-  [230, 230, 230],
-  [145, 180, 194],
-  [71, 111, 148],
-  [45, 83, 133],
-  [33, 57, 110]
+  [171, 64, 50],//red
+  [163, 132, 93],//green
+  [89, 117, 89],//brunbiege
+  [181, 114, 47],//orange
+  [176, 139, 100],//beige
+  [87, 125, 108]//blue
 ];
 
 class Agent {
