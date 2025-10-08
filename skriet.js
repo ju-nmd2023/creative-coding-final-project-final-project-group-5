@@ -1,12 +1,12 @@
 function setup() {
-    createCanvas(600, 800);
+    createCanvas(600, 750);
     background(140, 110, 80);
     field = generateField();
     generateAgents();
     frameRate();
 }
 
-const skrietHeight = 400;
+const skrietHeight = 300;
 
 function faceSkriet() {
   push();
