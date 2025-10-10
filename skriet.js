@@ -6,7 +6,7 @@ function setup() {
     frameRate();
 }
 
-const skrietHeight = 300;
+const skrietHeight = 275;
 
 function faceSkriet() {
   push();
@@ -69,6 +69,9 @@ bezierVertex(
 endShape(CLOSE);
 
 // Eyes
+fill(200, 130, 100);
+ellipse(width / 2 - 21, height - skrietHeight - 76, 12, 14);
+ellipse(width / 2 + 13, height - skrietHeight - 76, 12, 14);
 fill(204, 162, 105);
 ellipse(width / 2 - 22, height - skrietHeight - 75, 12, 14);
 ellipse(width / 2 + 12, height - skrietHeight - 75, 12, 14);
@@ -142,6 +145,7 @@ pop();
 function handsSkriet() {    
   // Hands of Skriet
 push();
+noFill();
 // Left hand and arm
 translate(-48, 10);
 beginShape();
@@ -159,12 +163,12 @@ endShape();
 beginShape();
 vertex(width / 2 + 10, height - skrietHeight - 20); // Top
 
-stroke(18);
-strokeWeight(20);
+stroke(10);
+strokeWeight(22);
 bezierVertex(
   width / 2 + 10, height - skrietHeight,
   width / 2, height - skrietHeight,
-  width / 2, height - skrietHeight + 40 // Bottom
+  width / 2, height - skrietHeight + 60 // Bottom
 );
 endShape();
 pop();
@@ -187,12 +191,113 @@ endShape();
 beginShape();
 vertex(width / 2 - 10, height - skrietHeight - 20); // Top
 
-stroke(18);
-strokeWeight(20);
+stroke(10);
+strokeWeight(22);
 bezierVertex(
   width / 2 - 10, height - skrietHeight,
   width / 2, height - skrietHeight,
-  width / 2, height - skrietHeight + 40 // Bottom point
+  width / 2, height - skrietHeight + 60 // Bottom point
+);
+endShape();
+pop();
+}
+
+function tornNecklace() {
+strokeCap(SQUARE);
+  push();
+stroke(94, 44, 4);
+strokeWeight(3);
+noFill();
+// Around neck
+beginShape();
+vertex(width / 2 - 17, height - skrietHeight - 10);
+bezierVertex(
+  width / 2, height - skrietHeight + 10,
+  width / 2 + 20, height - skrietHeight - 10,
+  width / 2 + 17, height - skrietHeight - 10
+);
+endShape();
+
+// Around neck 2
+beginShape();
+vertex(width / 2 - 18, height - skrietHeight - 2);
+bezierVertex(
+  width / 2, height - skrietHeight + 10,
+  width / 2 + 20, height - skrietHeight - 2,
+  width / 2 + 18, height - skrietHeight - 2
+);
+endShape();
+
+
+// Torns going down
+
+// Lower 1
+beginShape();
+vertex(width / 2 - 18, height - skrietHeight - 2);
+bezierVertex(
+  width / 2 - 35, height - skrietHeight + 15,
+  width / 2 - 20, height - skrietHeight + 20,
+  width / 2 - 10, height - skrietHeight + 45
+);
+endShape();
+
+// Lower 2
+beginShape();
+vertex(width / 2 - 8, height - skrietHeight + 2);
+bezierVertex(
+  width / 2, height - skrietHeight + 25,
+  width / 2 - 20, height - skrietHeight + 30,
+  width / 2 - 22, height - skrietHeight + 70
+);
+endShape();
+
+// Lower 3
+beginShape();
+vertex(width / 2 + 18, height - skrietHeight - 2);
+bezierVertex(
+  width / 2 - 15, height - skrietHeight + 25,
+  width / 2 + 50, height - skrietHeight + 20,
+  width / 2 + 10, height - skrietHeight + 65
+);
+endShape();
+
+// Upper 1
+beginShape();
+vertex(width / 2 - 17, height - skrietHeight - 10);
+bezierVertex(
+  width / 2, height - skrietHeight + 20,
+  width / 2 - 30, height - skrietHeight + 30,
+  width / 2 - 30, height - skrietHeight + 50
+);
+endShape();
+
+// Upper 2
+beginShape();
+vertex(width / 2 - 6, height - skrietHeight - 2);
+bezierVertex(
+  width / 2 + 15, height - skrietHeight + 25,
+  width / 2 - 15, height - skrietHeight + 20,
+  width / 2 + 5, height - skrietHeight + 58
+);
+endShape();
+
+// Upper 3
+beginShape();
+vertex(width / 2 + 10, height - skrietHeight - 3);
+bezierVertex(
+  width / 2, height - skrietHeight + 25,
+  width / 2 + 10, height - skrietHeight + 30,
+  width / 2 - 10, height - skrietHeight + 62
+);
+endShape();
+
+// Upper 4
+beginShape();
+vertex(width / 2 + 17, height - skrietHeight - 10);
+bezierVertex(
+  width / 2 + 45, height - skrietHeight + 25,
+  width / 2 - 20, height - skrietHeight + 20,
+  width / 2 + 35, height - skrietHeight + 55
 );
 endShape();
 pop();
@@ -204,15 +309,16 @@ function skriet() {
     // Body of Skriet
        noStroke();
     fill(0);
-    rect(width / 2 - 125, height - skrietHeight, 250, skrietHeight, 120, 120, 0, 0);
+    rect(width / 2 - 85, height - skrietHeight, 250, skrietHeight, 120, 120, 0, 0);
 
 push();
- translate(width / 2, height - skrietHeight - 90);
+ translate(width / 2 + 40, height - skrietHeight - 90);
 scale(2);
-translate(-width / 2, -(height - skrietHeight - 60));
+translate(-width / 2, -(height - skrietHeight - 55));
 
 handsSkriet();
 faceSkriet();
+tornNecklace();
 
 pop();
 
@@ -222,14 +328,167 @@ function butterfly() {
 //Frida Kahlo butterflys
 }
 
-function leaf() {
+// Leaves array
+let leaves = [
+  { x: 50,  y: 600, rotation: -PI / 12, color: [47, 76, 57] },
+  { x: 100, y: 700, rotation: PI / 15, color: [60, 90, 70] },
+  { x: 10,  y: 690, rotation: -PI / 10, color: [40, 65, 50] },
+  { x: 200, y: 700, rotation: PI / 12, color: [55, 80, 60] },
+  { x: 270, y: 760, rotation: -PI / 15, color: [45, 70, 55] },
+  { x: 300, y: 705, rotation: PI / 10, color: [50, 80, 60] },
+  { x: 350, y: 770, rotation: -PI / 12, color: [42, 68, 52] },
+  { x: 400, y: 700, rotation: PI / 15, color: [58, 88, 68] },
+  { x: 450, y: 750, rotation: -PI / 10, color: [48, 75, 58] },
+  { x: 400, y: 695, rotation: PI / 12, color: [52, 82, 62] },
+  { x: 600, y: 650, rotation: -PI / 15, color: [44, 72, 54] },
+
+  { x: 210, y: 450, rotation: PI / 10, color: [59, 89, 69] },
+  { x: - 90, y: 570, rotation: -PI / 12, color: [41, 67, 51] },
+  { x: 200, y: 605, rotation: PI / 15, color: [55, 85, 65] },
+  { x: 360, y: 615, rotation: -PI / 10, color: [48, 76, 58] },
+  { x: 710, y: 600, rotation: PI / 12, color: [52, 80, 62] },
+  { x: 360, y: 620, rotation: -PI / 15, color: [44, 70, 54] },
+  { x: 410, y: 610, rotation: PI / 10, color: [56, 84, 66] },
+  { x: 460, y: 605, rotation: -PI / 12, color: [46, 72, 56] },
+  { x: 510, y: 615, rotation: PI / 15, color: [50, 78, 60] }
+];
+
+function leaf(x, y, rotation, leafColor) {
     //Frida Kahlo leaves
+push();
+rotate(rotation);
+translate(x, y);
+    fill(leafColor[0], leafColor[1], leafColor[2], leafColor[3], leafColor[4], leafColor[5]);
+
+beginShape();
+vertex(0, - 120); // Top point (tip of drop)
+
+// Right side
+bezierVertex(
+  80, - 80,
+  100, 0,
+  60, + 80
+);
+
+// Bottom curve
+bezierVertex(
+  20, 120,
+  - 20, 120,
+  - 60, 80
+);
+
+// Left side
+bezierVertex(
+  - 100, 0,
+   - 80, - 80,
+  0,  - 120 // Back to top point
+);
+
+endShape(CLOSE);
+
+stroke(20, 40, 30);
+strokeWeight(1);
+noFill();
+
+// Leaf veins
+beginShape();
+vertex(0, - 100); // Top point (tip of drop)
+
+// Middle vein
+bezierVertex(
+  10,  - 70,
+  10, 0,
+  0, 100
+);
+
+// Vein 1
+bezierVertex(
+  100,  - 30,
+  50, 0,
+  0, 90
+);
+
+bezierVertex(
+   - 100,  - 30,
+  - 50, 0,
+ 0, 90
+);
+endShape();
+
+// Vein 2
+push();
+translate(5, - 40);
+beginShape();
+vertex(0, 100); // Top point (tip of drop)
+
+bezierVertex(
+  100,  - 30,
+  50, 0,
+  0, 90
+);
+
+bezierVertex(
+  - 100, - 30,
+   - 50, 0,
+  0, 90
+);
+endShape();
+pop();
+
+// Vein 3
+push();
+translate(6, - 80);
+beginShape();
+vertex(0, 100); // Top point (tip of drop)
+
+bezierVertex(
+   80,  - 30,
+  20, 0,
+  0, 100
+);
+
+bezierVertex(
+   - 80,  - 30,
+   - 10, 0,
+  0, 90
+);
+endShape();
+pop();
+
+// Vein 4
+push();
+translate(7, - 150);
+beginShape();
+vertex(0, 100); // Top point (tip of drop)
+
+bezierVertex(
+  10, 120,
+  40, 0,
+  0, 100
+);
+
+bezierVertex(
+   - 10, 120,
+  - 40, 0,
+  0, 100
+);
+endShape();
+pop();
+
+pop();
+}
+
+function drawLeaves() {
+  for (let l of leaves) {
+    leaf(l.x, l.y, l.rotation, l.color);
+  }
 }
 
 function skyBlobs() {
     //Yayoi Kusama sky blobs
 }
 
+// BACKGROUND
 //Nellies code cite
 const colors = [
   [171, 64, 50],//red
@@ -239,6 +498,13 @@ const colors = [
   [166, 83, 53],//beige
   [87, 125, 108]//blue
 ];
+
+const fieldSize = 50;
+const maxCols = Math.ceil(innerWidth / fieldSize);
+const maxRows = Math.ceil(innerHeight / fieldSize);
+const divider = 4;
+let field;
+let agents = [];
 
 class Agent {
   constructor(x, y, maxSpeed, maxForce) {
@@ -328,15 +594,7 @@ function generateAgents() {
   }
 }
 
-const fieldSize = 50;
-const maxCols = Math.ceil(innerWidth / fieldSize);
-const maxRows = Math.ceil(innerHeight / fieldSize);
-const divider = 4;
-let field;
-let agents = [];
-
-function draw() {
-//This is for background flow field
+function drawBackground() {
   for (let agent of agents) {
     const x = Math.floor(agent.position.x / fieldSize);
     const y = Math.floor(agent.position.y / fieldSize);
@@ -345,8 +603,12 @@ function draw() {
     agent.update();
     agent.checkBorders();
     agent.draw();
-  }//end of background flow field
-    skriet();
+  }
+}
 
 
+function draw() {
+  drawBackground();
+  drawLeaves();
+  skriet();
 }
