@@ -165,7 +165,7 @@ bezierVertex(
 endShape();
 
 beginShape();
-vertex(width / 2 + 10, height - skrietHeight - 20); // Top
+vertex(width / 2 + 10, height - skrietHeight - 25); // Top
 
 stroke(10);
 strokeWeight(22);
@@ -193,7 +193,7 @@ bezierVertex(
 endShape();
 
 beginShape();
-vertex(width / 2 - 10, height - skrietHeight - 20); // Top
+vertex(width / 2 - 10, height - skrietHeight - 25); // Top
 
 stroke(10);
 strokeWeight(22);
@@ -346,27 +346,27 @@ pop();
 
 // Leaves array
 let leaves = [
-  { x: 50,  y: 600, rotation: -PI / 12, color: [47, 76, 57] },
-  { x: 100, y: 700, rotation: PI / 15, color: [60, 90, 70] },
-  { x: 10,  y: 690, rotation: -PI / 10, color: [40, 65, 50] },
-  { x: 200, y: 700, rotation: PI / 12, color: [55, 80, 60] },
-  { x: 270, y: 760, rotation: -PI / 15, color: [45, 70, 55] },
-  { x: 300, y: 705, rotation: PI / 10, color: [50, 80, 60] },
-  { x: 350, y: 770, rotation: -PI / 12, color: [42, 68, 52] },
-  { x: 400, y: 700, rotation: PI / 15, color: [58, 88, 68] },
-  { x: 450, y: 750, rotation: -PI / 10, color: [48, 75, 58] },
-  { x: 400, y: 695, rotation: PI / 12, color: [52, 82, 62] },
-  { x: 600, y: 650, rotation: -PI / 15, color: [44, 72, 54] },
+  { x: 50,  y: 600, rotation: -Math.PI / 12, color: [47, 76, 57] },
+  { x: 100, y: 700, rotation: Math.PI / 15, color: [60, 90, 70] },
+  { x: 10,  y: 690, rotation: -Math.PI / 10, color: [40, 65, 50] },
+  { x: 200, y: 700, rotation: Math.PI / 12, color: [55, 80, 60] },
+  { x: 270, y: 760, rotation: -Math.PI / 15, color: [45, 70, 55] },
+  { x: 300, y: 705, rotation: Math.PI / 10, color: [50, 80, 60] },
+  { x: 350, y: 770, rotation: -Math.PI / 12, color: [42, 68, 52] },
+  { x: 400, y: 700, rotation: Math.PI / 15, color: [58, 88, 68] },
+  { x: 450, y: 750, rotation: -Math.PI / 10, color: [48, 75, 58] },
+  { x: 400, y: 695, rotation: Math.PI / 12, color: [52, 82, 62] },
+  { x: 600, y: 650, rotation: -Math.PI / 15, color: [44, 72, 54] },
 
-  { x: 210, y: 450, rotation: PI / 10, color: [59, 89, 69] },
-  { x: - 90, y: 570, rotation: -PI / 12, color: [41, 67, 51] },
-  { x: 200, y: 605, rotation: PI / 15, color: [55, 85, 65] },
-  { x: 360, y: 615, rotation: -PI / 10, color: [48, 76, 58] },
-  { x: 710, y: 600, rotation: PI / 12, color: [52, 80, 62] },
-  { x: 360, y: 620, rotation: -PI / 15, color: [44, 70, 54] },
-  { x: 410, y: 610, rotation: PI / 10, color: [56, 84, 66] },
-  { x: 460, y: 605, rotation: -PI / 12, color: [46, 72, 56] },
-  { x: 510, y: 615, rotation: PI / 15, color: [50, 78, 60] }
+  { x: 210, y: 450, rotation: Math.PI / 10, color: [59, 89, 69] },
+  { x: -90, y: 570, rotation: -Math.PI / 12, color: [41, 67, 51] },
+  { x: 200, y: 605, rotation: Math.PI / 15, color: [55, 85, 65] },
+  { x: 360, y: 615, rotation: -Math.PI / 10, color: [48, 76, 58] },
+  { x: 710, y: 600, rotation: Math.PI / 12, color: [52, 80, 62] },
+  { x: 360, y: 620, rotation: -Math.PI / 15, color: [44, 70, 54] },
+  { x: 410, y: 610, rotation: Math.PI / 10, color: [56, 84, 66] },
+  { x: 460, y: 605, rotation: -Math.PI / 12, color: [46, 72, 56] },
+  { x: 510, y: 615, rotation: Math.PI / 15, color: [50, 78, 60] }
 ];
 
 function leaf(x, y, rotation, leafColor) {
@@ -522,12 +522,7 @@ const colors = [
   [87, 125, 108]//blue
 ];
 
-const fieldSize = 50;
-const maxCols = Math.ceil(innerWidth / fieldSize);
-const maxRows = Math.ceil(innerHeight / fieldSize);
-const divider = 4;
-let field;
-let agents = [];
+
 
 class Agent {
   constructor(x, y, maxSpeed, maxForce) {
@@ -592,6 +587,8 @@ class Agent {
   }
 }
 
+
+
 function generateField() {
   let field = [];
   noiseSeed(Math.random() * 100);   
@@ -605,6 +602,13 @@ function generateField() {
   return field;
 }
 
+const fieldSize = 50;
+const maxCols = Math.ceil(innerWidth / fieldSize);
+const maxRows = Math.ceil(innerHeight / fieldSize);
+const divider = 4;
+let field;
+let agents = [];
+
 function generateAgents() {
   for (let i = 0; i < 100; i++) {
     let agent = new Agent(
@@ -616,6 +620,8 @@ function generateAgents() {
     agents.push(agent);
   }
 }
+
+
 
 function drawBackground() {
   for (let agent of agents) {
