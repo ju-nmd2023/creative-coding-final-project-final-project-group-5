@@ -6,6 +6,8 @@ function setup() {
     frameRate();
 }
 
+// THE SCREAM (Skriet in Swedish)
+
 const skrietHeight = 275;
 
 function faceSkriet() {
@@ -134,8 +136,10 @@ pop();
 
 // Mouth
 noFill();
-stroke(40);
 strokeWeight(3);
+stroke(200, 130, 100);
+ellipse(width / 2 - 2.5, height - skrietHeight - 33, 12, 22);
+stroke(40);
 ellipse(width / 2 - 4, height - skrietHeight - 33, 12, 22);
 
 pop();
@@ -203,12 +207,25 @@ pop();
 }
 
 function tornNecklace() {
-strokeCap(SQUARE);
   push();
-stroke(94, 44, 4);
+  noFill();
+
+  // Wound around neck
+  strokeWeight(8);
+  stroke(230, 130, 100);
+  beginShape();
+  vertex(width / 2 - 15, height - skrietHeight - 7);
+  bezierVertex(
+    width / 2, height - skrietHeight + 8,
+    width / 2 + 10, height - skrietHeight - 5,
+    width / 2 + 15, height - skrietHeight - 7
+  );
+  endShape();
+  
+  strokeCap(SQUARE);
 strokeWeight(3);
-noFill();
-// Around neck
+stroke(94, 44, 4);
+
 beginShape();
 vertex(width / 2 - 17, height - skrietHeight - 10);
 bezierVertex(
@@ -324,9 +341,8 @@ pop();
 
 }
 
-function butterfly() {
-//Frida Kahlo butterflys
-}
+
+// NATURE ELEMENTS
 
 // Leaves array
 let leaves = [
@@ -483,6 +499,13 @@ function drawLeaves() {
     leaf(l.x, l.y, l.rotation, l.color);
   }
 }
+
+function butterfly() {
+//Frida Kahlo butterflys
+}
+
+
+// YAYOI KUSAMA ELEMENTS
 
 function skyBlobs() {
     //Yayoi Kusama sky blobs
