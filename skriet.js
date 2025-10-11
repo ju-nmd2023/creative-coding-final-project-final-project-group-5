@@ -1,9 +1,32 @@
+// SOUND
+let handpose;
+let video;
+let hands = [];
+let sound;
+let isPlaying = false;
+
+function preload() {
+    handpose = ml5.handPose();
+    // Load your sound file here
+    sound = loadSound('wilhelm-scream.wav');
+}
+
 function setup() {
     createCanvas(600, 750);
     background(140, 110, 80);
+
+
+    // BACKGROUND
     field = generateField();
     generateAgents();
     frameRate();
+
+    // SOUND
+      video = createCapture(VIDEO);
+    video.size(640, 480);
+    video.hide();
+
+    handpose.detectStart(video, getHandsData);
 }
 
 // THE SCREAM (Skriet in Swedish)
@@ -637,7 +660,35 @@ function drawBackground() {
 
 
 function draw() {
+
+// SOUND
+  // Display status text
+    fill(255);
+    textAlign(CENTER, CENTER);
+    textSize(12);
+    text(`Hands: ${hands.length}`, width/2, height/2);
+    
+    // Check if two hands are detected
+    if (hands.length >= 2) {
+        // Play sound if not already playing
+        if (!isPlaying) {
+            sound.play();
+            isPlaying = true;
+        }
+    } else {
+        // Stop sound when less than two hands
+        if (isPlaying) {
+            sound.stop();
+            isPlaying = false;
+        }
+    }
+
+    // FUNCTIONS
   drawBackground();
   drawLeaves();
   skriet();
+}
+
+function getHandsData(results) {
+    hands = results;
 }
