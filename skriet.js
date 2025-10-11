@@ -2,13 +2,15 @@
 let handpose;
 let video;
 let hands = [];
-let sound;
+let sounds = [];
+let currentSoundIndex = 0;
 let isPlaying = false;
 
 function preload() {
     handpose = ml5.handPose();
-    // Load your sound file here
-    sound = loadSound('wilhelm-scream.wav');
+    sounds.push(loadSound('scream1.wav'));
+    sounds.push(loadSound('scream2.mp3'));
+    sounds.push(loadSound('scream3.mp3'));
 }
 
 function setup() {
@@ -22,7 +24,7 @@ function setup() {
     frameRate();
 
     // SOUND
-      video = createCapture(VIDEO);
+    video = createCapture(VIDEO);
     video.size(640, 480);
     video.hide();
 
@@ -244,10 +246,70 @@ function tornNecklace() {
     width / 2 + 15, height - skrietHeight - 7
   );
   endShape();
-  
+
+  fill(138, 3, 3);
+  noStroke();
+  push();
+  translate(0, -5);
+  // Blood drops
+
+  // Drop 1
+beginShape();
+vertex(width / 2 - 12, height - skrietHeight - 5);
+bezierVertex(
+  width / 2 - 13, height - skrietHeight - 2,
+  width / 2 - 13, height - skrietHeight + 2,
+  width / 2 - 12, height - skrietHeight + 5
+);
+bezierVertex(
+  width / 2 - 11, height - skrietHeight + 2,
+  width / 2 - 11, height - skrietHeight - 2,
+  width / 2 - 12, height - skrietHeight - 5
+);
+endShape(CLOSE);
+pop();
+
+// Drop 2
+push();
+translate(-2, -8);
+beginShape();
+vertex(width / 2, height - skrietHeight + 8);
+bezierVertex(
+  width / 2 - 1.5, height - skrietHeight + 12,
+  width / 2 - 1.5, height - skrietHeight + 18,
+  width / 2, height - skrietHeight + 22
+);
+bezierVertex(
+  width / 2 + 1.5, height - skrietHeight + 18,
+  width / 2 + 1.5, height - skrietHeight + 12,
+  width / 2, height - skrietHeight + 8
+);
+endShape(CLOSE);
+pop();
+
+// Drop 3
+push();
+translate(0, -1);
+beginShape();
+vertex(width / 2 + 12, height - skrietHeight - 4);
+bezierVertex(
+  width / 2 + 11, height - skrietHeight - 1,
+  width / 2 + 11, height - skrietHeight + 3,
+  width / 2 + 12, height - skrietHeight + 6
+);
+bezierVertex(
+  width / 2 + 13, height - skrietHeight + 3,
+  width / 2 + 13, height - skrietHeight - 1,
+  width / 2 + 12, height - skrietHeight - 4
+);
+endShape(CLOSE);
+pop();
+
+  // Torn necklace
   strokeCap(SQUARE);
 strokeWeight(3);
 stroke(94, 44, 4);
+noFill();
 
 beginShape();
 vertex(width / 2 - 17, height - skrietHeight - 10);
@@ -776,27 +838,37 @@ function drawBackground() {
   }
 }
 
+function getHandsData(results) {
+    hands = results;
+}
+
+// This function was retrieved from Claude https://claude.ai/public/artifacts/d0314ebe-227e-4757-bc13-eee4deb1ae3f
+function playNextSound() {
+    sounds[currentSoundIndex].play();
+    
+    sounds[currentSoundIndex].onended(() => {
+      
+        currentSoundIndex = (currentSoundIndex + 1) % sounds.length;
+        
+        if (hands.length >= 2) {
+            playNextSound();
+        } else {
+            isPlaying = false;
+        }
+    });
+}
 
 function draw() {
 
 // SOUND
-  // Display status text
-    fill(255);
-    textAlign(CENTER, CENTER);
-    textSize(12);
-    text(`Hands: ${hands.length}`, width/2, height/2);
-    
-    // Check if two hands are detected
     if (hands.length >= 2) {
-        // Play sound if not already playing
         if (!isPlaying) {
-            sound.play();
+            playNextSound();
             isPlaying = true;
         }
     } else {
-        // Stop sound when less than two hands
         if (isPlaying) {
-            sound.stop();
+            sounds[currentSoundIndex].stop();
             isPlaying = false;
         }
     }
@@ -810,6 +882,5 @@ function draw() {
   skriet();
 }
 
-function getHandsData(results) {
-    hands = results;
-}
+
+
