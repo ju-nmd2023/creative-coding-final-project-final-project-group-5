@@ -7,7 +7,6 @@ let isPlaying = false;
 
 function preload() {
     handpose = ml5.handPose();
-    // Load your sound file here
     sound = loadSound('wilhelm-scream.wav');
 }
 
