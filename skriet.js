@@ -320,6 +320,12 @@ endShape();
 pop();
 }
 
+//blobs in the sky
+beginShape();
+vertex(x1, y1);
+bezierVertex();
+endShape();
+
 function skriet() {
     //The scream + Frida Kahlo
  
