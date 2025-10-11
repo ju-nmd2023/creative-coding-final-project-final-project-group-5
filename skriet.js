@@ -1,3 +1,4 @@
+const size = 60;
 // SOUND
 let handpose;
 let video;
@@ -17,7 +18,6 @@ function setup() {
     createCanvas(600, 750);
     background(140, 110, 80);
 
-
     // BACKGROUND
     field = generateField();
     generateAgents();
@@ -29,6 +29,26 @@ function setup() {
     video.hide();
 
     handpose.detectStart(video, getHandsData);
+
+
+}
+
+function scribbles(x, y) {
+  push();
+  translate(x, y);
+
+  stroke(random(110, 150), random(130, 170), random(110, 150));
+  strokeWeight(1.2);
+  strokeJoin(ROUND);
+  noFill();
+
+  beginShape();
+  for (let s = 0; s < 2; s++) {
+    vertex(random(0, size), random(0, size));
+  }
+  endShape();
+  
+  pop(); 
 }
 
 // THE SCREAM (Skriet in Swedish)
@@ -880,6 +900,15 @@ function draw() {
   drawBlobs();
   drawBlobsSmall();
   drawSkyCircles();
+
+      // SCRIBBLES
+    scribbles(125, 400);
+    scribbles(300, 175);
+    scribbles(520, 280);
+    scribbles(-30, 270);
+    scribbles(200, -25);
+    scribbles(570, 20);
+
   skriet();
 }
 
