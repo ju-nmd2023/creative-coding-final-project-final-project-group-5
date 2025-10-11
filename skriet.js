@@ -1,3 +1,4 @@
+const size = 60;
 // SOUND
 let handpose;
 let video;
@@ -29,6 +30,29 @@ function setup() {
     video.hide();
 
     handpose.detectStart(video, getHandsData);
+
+    // SCRIBBLES
+    scribbles(100, 150);
+    scribbles(300, 200);
+    scribbles(500, 100);
+}
+
+function scribbles(x, y) {
+  push();
+  translate(x, y);
+
+  stroke(random(110, 150), random(130, 170), random(110, 150));
+  strokeWeight(1.2);
+  strokeJoin(ROUND);
+  noFill();
+
+  beginShape();
+  for (let s = 0; s < 15; s++) {
+    vertex(random(0, size), random(0, size));
+  }
+  endShape();
+  
+  pop(); 
 }
 
 // THE SCREAM (Skriet in Swedish)
