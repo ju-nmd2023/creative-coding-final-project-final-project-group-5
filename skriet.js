@@ -18,7 +18,6 @@ function setup() {
     createCanvas(600, 750);
     background(140, 110, 80);
 
-
     // BACKGROUND
     field = generateField();
     generateAgents();
@@ -31,10 +30,7 @@ function setup() {
 
     handpose.detectStart(video, getHandsData);
 
-    // SCRIBBLES
-    scribbles(100, 150);
-    scribbles(300, 200);
-    scribbles(500, 100);
+
 }
 
 function scribbles(x, y) {
@@ -47,7 +43,7 @@ function scribbles(x, y) {
   noFill();
 
   beginShape();
-  for (let s = 0; s < 15; s++) {
+  for (let s = 0; s < 2; s++) {
     vertex(random(0, size), random(0, size));
   }
   endShape();
@@ -903,6 +899,15 @@ function draw() {
   drawBlobs();
   drawBlobsSmall();
   drawSkyCircles();
+
+      // SCRIBBLES
+    scribbles(125, 400);
+    scribbles(300, 175);
+    scribbles(520, 280);
+    scribbles(-30, 270);
+    scribbles(200, -25);
+    scribbles(570, 20);
+
   skriet();
 }
 
