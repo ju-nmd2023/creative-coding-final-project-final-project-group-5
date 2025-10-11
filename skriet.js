@@ -528,18 +528,130 @@ function butterfly() {
 //Frida Kahlo butterflys
 }
 
+//blobs without stroke
+let blobs = [
+  {x: -60, y: -60, color: [0, 99, 166]},//blue
+  {x: 0, y: 50, color: [176, 40, 59]},//Red
+  {x: 350, y: 80, color: [186, 88, 61]}//orange
+ 
+];
+//blobs with strokes
+let blobsSmall = [
+  {x: 10, y: 200, color: [184, 103, 83]},//orange
+  {x: 220, y: 20, color: [56, 133, 48]},//green
+  {x: 370, y: 10, color: [106, 98, 161]}//lila
+ 
+];
 
-// YAYOI KUSAMA ELEMENTS
+//sky circles
+let circles = [
+  {x: 200, y: 100, scaling: 1.5, color: [33, 182, 219]}, //blue
+  {x: 40, y: 190, scaling: 1.5, color: [33, 182, 219]}, //blue
+  {x: 400, y: 80, scaling: 1.5, color: [33, 182, 219]}, //blue
+  {x: 540, y: 150, scaling: 1.5, color: [33, 182, 219]} //blue
+];
 
-function skyBlobs() {
-    //Yayoi Kusama sky blobs
-    //blobs in the sky
-beginShape();
-vertex(x1, y1);
-bezierVertex();
-endShape();
+function skyCircles(x, y, scaling, color) {
+  push();
+  translate(x,y);
+  scale(scaling);
+  fill(color);
+  noStroke();
+  ellipse(0, 0, 20);
+  pop();
 }
 
+// YAYOI KUSAMA ELEMENTS
+function skyBlobs(x, y, color) {
+ //Yayoi Kusama sky blobs without stroke
+push();
+translate(x, y);
+scale(0.8);
+fill(color);
+noStroke();
+
+beginShape();
+vertex(200, 150);
+bezierVertex(250, 180, 270, 170, 260, 200);
+bezierVertex(220, 250, 240, 200, 180, 210);
+bezierVertex(160, 220, 130, 220, 120, 200);  // curves left
+bezierVertex(130, 160, 150, 130, 200, 150);  // curves back to start
+endShape();
+//face
+//Left eye
+fill(0);
+ellipse(160,170, 20, 10);
+//right eye
+fill(0);
+ellipse(190,175, 20, 10);
+//mouth
+noFill();
+stroke(0);
+strokeWeight(4);
+beginShape();
+vertex(150, 190);
+bezierVertex(150, 200, 205, 200, 200, 190); 
+endShape();
+pop();
+}
+
+function skyBlobsSmall(x, y, color) {
+    //Yayoi Kusama sky blobs
+    //blobs in the sky with strokes
+push();
+translate(x,y);
+scale(0.5);
+fill(color);
+strokeWeight(6);
+stroke(217, 130, 145);
+
+beginShape();
+vertex(200, 140);  // top
+  
+  // Right side - wider curves
+  bezierVertex(290, 120, 280, 160, 270, 200);  // top-right
+  bezierVertex(280, 240, 260, 270, 200, 250);  // bottom-right
+  
+  // Left side - wider curves
+  bezierVertex(130, 230, 120, 280, 120, 200);  // bottom-left
+  bezierVertex(120, 160, 140, 120, 200, 140);  // top-left
+endShape();
+//face
+//Left eye
+fill(0);
+ellipse(160,170, 20, 10);
+//right eye
+fill(0);
+ellipse(240,175, 20, 10);
+//mouth
+noFill();
+stroke(217, 130, 145);
+strokeWeight(4);
+beginShape();
+vertex(180, 190);
+bezierVertex(180, 200, 240, 220, 230, 190);
+
+endShape();
+pop();
+}
+
+function drawBlobs() {
+  for(let blob of blobs) {
+    skyBlobs(blob.x, blob.y, blob.color);
+  }
+}
+
+function drawBlobsSmall() {
+  for(let blobs of blobsSmall) {
+    skyBlobsSmall(blobs.x, blobs.y, blobs.color);
+  }
+}
+
+function drawSkyCircles() {
+  for(let circle of circles) {
+    skyCircles(circle.x, circle.y, circle.scaling, circle.color);
+  }
+}
 // BACKGROUND
 //Nellies code cite
 const colors = [
@@ -692,6 +804,9 @@ function draw() {
     // FUNCTIONS
   drawBackground();
   drawLeaves();
+  drawBlobs();
+  drawBlobsSmall();
+  drawSkyCircles();
   skriet();
 }
 
