@@ -246,10 +246,70 @@ function tornNecklace() {
     width / 2 + 15, height - skrietHeight - 7
   );
   endShape();
-  
+
+  fill(138, 3, 3);
+  noStroke();
+  push();
+  translate(0, -5);
+  // Blood drops
+
+  // Drop 1
+beginShape();
+vertex(width / 2 - 12, height - skrietHeight - 5);
+bezierVertex(
+  width / 2 - 13, height - skrietHeight - 2,
+  width / 2 - 13, height - skrietHeight + 2,
+  width / 2 - 12, height - skrietHeight + 5
+);
+bezierVertex(
+  width / 2 - 11, height - skrietHeight + 2,
+  width / 2 - 11, height - skrietHeight - 2,
+  width / 2 - 12, height - skrietHeight - 5
+);
+endShape(CLOSE);
+pop();
+
+// Drop 2
+push();
+translate(-2, -8);
+beginShape();
+vertex(width / 2, height - skrietHeight + 8);
+bezierVertex(
+  width / 2 - 1.5, height - skrietHeight + 12,
+  width / 2 - 1.5, height - skrietHeight + 18,
+  width / 2, height - skrietHeight + 22
+);
+bezierVertex(
+  width / 2 + 1.5, height - skrietHeight + 18,
+  width / 2 + 1.5, height - skrietHeight + 12,
+  width / 2, height - skrietHeight + 8
+);
+endShape(CLOSE);
+pop();
+
+// Drop 3
+push();
+translate(0, -1);
+beginShape();
+vertex(width / 2 + 12, height - skrietHeight - 4);
+bezierVertex(
+  width / 2 + 11, height - skrietHeight - 1,
+  width / 2 + 11, height - skrietHeight + 3,
+  width / 2 + 12, height - skrietHeight + 6
+);
+bezierVertex(
+  width / 2 + 13, height - skrietHeight + 3,
+  width / 2 + 13, height - skrietHeight - 1,
+  width / 2 + 12, height - skrietHeight - 4
+);
+endShape(CLOSE);
+pop();
+
+  // Torn necklace
   strokeCap(SQUARE);
 strokeWeight(3);
 stroke(94, 44, 4);
+noFill();
 
 beginShape();
 vertex(width / 2 - 17, height - skrietHeight - 10);
