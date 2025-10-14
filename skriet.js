@@ -612,7 +612,7 @@ function butterfly() {
 
 //blobs without stroke
 let blobs = [
-  {x: -60, y: -60, color: [0, 99, 166]},//blue
+  {x: -60, y: -80, color: [0, 99, 166]},//blue
   {x: 0, y: 50, color: [176, 40, 59]},//Red
   {x: 350, y: 80, color: [186, 88, 61]}//orange
  
@@ -620,16 +620,17 @@ let blobs = [
 //blobs with strokes
 let blobsSmall = [
   {x: 10, y: 200, color: [184, 103, 83]},//orange
-  {x: 220, y: 20, color: [56, 133, 48]},//green
-  {x: 370, y: 10, color: [106, 98, 161]}//lila
+  {x: 220, y: 10, color: [56, 133, 48]},//green
+  {x: 380, y: -10, color: [106, 98, 161]}//lila
  
 ];
 
 //sky circles
 let circles = [
-  {x: 200, y: 100, scaling: 1.5, color: [33, 182, 219]}, //blue
+  {x: 200, y: 150, scaling: 1.5, color: [33, 182, 219]}, //blue
   {x: 40, y: 190, scaling: 1.5, color: [33, 182, 219]}, //blue
   {x: 400, y: 80, scaling: 1.5, color: [33, 182, 219]}, //blue
+  {x: 550, y: 60, scaling: 1.5, color: [33, 182, 219]}, //blue
   {x: 540, y: 150, scaling: 1.5, color: [33, 182, 219]} //blue
 ];
 
