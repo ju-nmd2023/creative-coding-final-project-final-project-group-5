@@ -29,10 +29,9 @@ function setup() {
     video.hide();
 
     handpose.detectStart(video, getHandsData);
-
-
 }
 
+// SCRIBBLES
 function scribbles(x, y) {
   push();
   translate(x, y);
@@ -52,7 +51,6 @@ function scribbles(x, y) {
 }
 
 // THE SCREAM (Skriet in Swedish)
-
 const skrietHeight = 275;
 
 function faceSkriet() {
@@ -425,7 +423,6 @@ endShape();
 pop();
 }
 
-
 function skriet() {
     //The scream + Frida Kahlo
  
@@ -606,18 +603,14 @@ function drawLeaves() {
   }
 }
 
-function butterfly() {
-//Frida Kahlo butterflys
-}
-
-//blobs without stroke
+// Blobs without stroke
 let blobs = [
   {x: -60, y: -80, color: [0, 99, 166]},//blue
   {x: 0, y: 50, color: [176, 40, 59]},//Red
   {x: 350, y: 80, color: [186, 88, 61]}//orange
  
 ];
-//blobs with strokes
+// Blobs with strokes
 let blobsSmall = [
   {x: 10, y: 200, color: [184, 103, 83]},//orange
   {x: 220, y: 10, color: [56, 133, 48]},//green
@@ -625,7 +618,7 @@ let blobsSmall = [
  
 ];
 
-//sky circles
+// Sky circles
 let circles = [
   {x: 200, y: 150, scaling: 1.5, color: [33, 182, 219]}, //blue
   {x: 40, y: 190, scaling: 1.5, color: [33, 182, 219]}, //blue
@@ -657,17 +650,18 @@ beginShape();
 vertex(200, 150);
 bezierVertex(250, 180, 270, 170, 260, 200);
 bezierVertex(220, 250, 240, 200, 180, 210);
-bezierVertex(160, 220, 130, 220, 120, 200);  // curves left
-bezierVertex(130, 160, 150, 130, 200, 150);  // curves back to start
+bezierVertex(160, 220, 130, 220, 120, 200); 
+bezierVertex(130, 160, 150, 130, 200, 150); 
 endShape();
-//face
+
+// Face
 //Left eye
 fill(0);
 ellipse(160,170, 20, 10);
-//right eye
+//Right eye
 fill(0);
 ellipse(190,175, 20, 10);
-//mouth
+//Mouth
 noFill();
 stroke(0);
 strokeWeight(4);
@@ -679,8 +673,7 @@ pop();
 }
 
 function skyBlobsSmall(x, y, color) {
-    //Yayoi Kusama sky blobs
-    //blobs in the sky with strokes
+    //Yayoi Kusama sky blobs with stroke
 push();
 translate(x,y);
 scale(0.5);
@@ -689,24 +682,25 @@ strokeWeight(6);
 stroke(217, 130, 145);
 
 beginShape();
-vertex(200, 140);  // top
+vertex(200, 140);
   
-  // Right side - wider curves
-  bezierVertex(290, 120, 280, 160, 270, 200);  // top-right
-  bezierVertex(280, 240, 260, 270, 200, 250);  // bottom-right
+  // Right side
+  bezierVertex(290, 120, 280, 160, 270, 200);  
+  bezierVertex(280, 240, 260, 270, 200, 250);  
   
-  // Left side - wider curves
-  bezierVertex(130, 230, 120, 280, 120, 200);  // bottom-left
-  bezierVertex(120, 160, 140, 120, 200, 140);  // top-left
+  // Left side
+  bezierVertex(130, 230, 120, 280, 120, 200);  
+  bezierVertex(120, 160, 140, 120, 200, 140);  
 endShape();
-//face
+
+// Face
 //Left eye
 fill(0);
 ellipse(160,170, 20, 10);
-//right eye
+//Right eye
 fill(0);
 ellipse(240,175, 20, 10);
-//mouth
+//Mouth
 noFill();
 stroke(217, 130, 145);
 strokeWeight(4);
@@ -735,8 +729,9 @@ function drawSkyCircles() {
     skyCircles(circle.x, circle.y, circle.scaling, circle.color);
   }
 }
+
 // BACKGROUND
-//Nellies code cite
+//The Flow Field background functions were retrieved from Nellie Thell's individual portfolio
 const colors = [
   [171, 64, 50],//red
   [163, 132, 93],//green
@@ -811,8 +806,6 @@ class Agent {
   }
 }
 
-
-
 function generateField() {
   let field = [];
   noiseSeed(Math.random() * 100);   
@@ -859,6 +852,7 @@ function drawBackground() {
   }
 }
 
+// SOUND FUNCTIONS
 function getHandsData(results) {
     hands = results;
 }
@@ -879,6 +873,8 @@ function playNextSound() {
     });
 }
 
+
+// DRAW
 function draw() {
 
 // SOUND
